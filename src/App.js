@@ -5,7 +5,6 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from './firebaseConfig';
 import PlayGroundProvider from './Context/PlaygroundContext';
 import ModalProvider from './Context/ModalContext';
-import SignUp from './Pages/SignUp';
 const SignIn = React.lazy(() => import("./Pages/SignIn"));
 const Page404 = React.lazy(() => import("./Pages/Page404"));
 function App() {
@@ -31,7 +30,7 @@ function App() {
                 </> :
                   <>
                     <Route path="/" element={<SignIn />} />
-                    <Route path="*" element={<SignUp />} />
+                    <Route path="*" element={<SignIn />} />
                     {
                       routes.map((route, index) => {
                         return <Route key={index} path={route.path} element={route.privateRoute ? <Page404 /> : route.component} />
